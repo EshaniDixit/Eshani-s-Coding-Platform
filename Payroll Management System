@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Employee {
+private:
+    int empID;
+    string empName;
+    float hoursWorked;
+    float hourlyRate;
+public:
+    Employee(int id, string name, float hours, float rate) {
+        empID = id;
+        empName = name;
+        hoursWorked = hours;
+        hourlyRate = rate;
+    }
+    float calculateGrossPay() {
+        return hoursWorked * hourlyRate;
+    }
+    float calculateNetPay() {
+        return calculateGrossPay() * 0.90;
+    }
+    void displayInfo() {
+        cout << "Employee ID: " << empID << endl;
+        cout << "Employee Name: " << empName << endl;
+        cout << "Hours Worked: " << hoursWorked << " hours" << endl;
+        cout << "Hourly Rate: $" << hourlyRate << endl;
+        cout << "Gross Pay: $" << calculateGrossPay() << endl;
+        cout << "Net Pay: $" << calculateNetPay() << endl;
+    }
+};
+
+int main() {
+    int empID;
+    string empName;
+    float hoursWorked, hourlyRate;
+    cout << "Enter Employee ID: ";
+    cin >> empID;
+    cin.ignore();
+    cout << "Enter Employee Name: ";
+    getline(cin, empName);
+    cout << "Enter Hours Worked: ";
+    cin >> hoursWorked;
+    cout << "Enter Hourly Rate: $";
+    cin >> hourlyRate;
+    Employee emp(empID, empName, hoursWorked, hourlyRate);
+    cout << endl;
+    emp.displayInfo();
+    return 0;
+}
